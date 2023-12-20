@@ -1,7 +1,9 @@
 #include<iostream>
 #include<math.h>
 // #include<cstdlib> //for exit -1
-//#define f(x) (cos(x)-x*exp(x))
+//#define f(x) (cos(x)-x*exp(x))//defining a function is better than macro so 
+//using function bcz function is less error prone
+
 using namespace std;
 
 float f(float x)
@@ -13,7 +15,6 @@ float f(float x)
 int main()
 {
     float a,b;
-    here:
     //Enter Guesses
     cout<<"\nEnter a:";
     cin>>a;
@@ -21,9 +22,8 @@ int main()
     cin>>b;
     if(f(a)*f(b)>0)
         { 
-            cout<<"\n Initial Guesses are wrong";
-            cout<<"\n Try again with another guesses";
-            goto here;
+            cout<<"\nInitial Guesses are wrong";
+            cout<<"\nRun the program again with different guesses";
         
         }
     else if (f(a)*f(b)==00)
