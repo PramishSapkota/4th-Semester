@@ -21,13 +21,11 @@ int main()
 {
     cout<<"\nEnter a:";
     cin>>a;
-    cout<<"\nEnter b:";
-    cin>>b;
     cout<<"\nEnter Tolerable error:";
     cin>>E;
     do
     {
-        if (f_(a)<E){
+        if (fabs(f_(a))<E){
             cout<<"Mathematical Error";
             return -1;
         }
