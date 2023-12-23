@@ -9,6 +9,7 @@ using namespace std;
 float f(float x)
 {
     return cos(x)-x*exp(x);
+    // return(1/(x-2));// for a discontinuous case
 }
 
 
@@ -26,7 +27,7 @@ int main()
             cout<<"\nRun the program again with different guesses";
         
         }
-    else if (f(a)*f(b)==00)
+    else if (f(a)*f(b)==0)
         {
             if (f(a)==0)
                 cout<<"\n Required value="<<a;
@@ -42,7 +43,7 @@ int main()
         cin>>E;
         n=(log(fabs(b-a))-log (E))/log(2);
         
-        cout << endl << "n=" << n << endl;
+        cout <<"\n n=" << n << endl;
         do
         {
             c=(a+b)/2;
