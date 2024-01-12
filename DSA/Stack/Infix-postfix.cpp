@@ -1,3 +1,4 @@
+//infix to postfix conversion
 #include<iostream>
 #include<ctype.h>
 #define ssize 50
@@ -23,8 +24,8 @@ int precedenceCheck(char c){
         break;
     
     default:
-        cout<<"Error =(";
-        return -1;
+        //cout<<"Error =(";
+        return 0;//this doesnt terminate the program
         break;
     }
 }
@@ -36,40 +37,48 @@ int main(){
     cout<<"Enter infix expression: ";
     cin>>ip;
     len=ip.size();
-    l=len;
     for ( i = 0; i <len; i++)
     {
         if(ip[i]=='('){
+            
             ostack[++otop]=ip[i];
-            l++;
+            
         }
         else if(isalpha(ip[i])){
+            
             pstack[++ptop]=ip[i];
-            l++;
+            
         }
         else if(ip[i]==')')
         {
-            l++;
-            while (otop >= 0 && opstack[otop] != '(')
-            {
-                poststack[++ptop] = opstack[otop];
-                otop--;
+            while (otop >= 0 && ostack[otop] != '(')
+            { /*otop>=0 for expressions like: a+b*c)i.e if'(' isnt in front
+               and to check if operator stack i sempty or not*/
+                pstack[++ptop] = ostack[otop--];
+                
             }
-            if (otop >= 0 && opstack[otop] == '(')
+            if (otop >= 0 && ostack[otop] == '(')
                 otop--;
             else
             {
-                printf("Invalid expression\n");
-                return 1;
+                cout<<"Invalid expression\n";
+                return -1;
             }
         }
-
-        
+        else{
+            while (otop>=0 && precedenceCheck(ostack[otop])>=precedenceCheck(ip[i])){
+              
+                pstack[++ptop] = ostack[otop--];
+            }
+            ostack[++otop]=ip[i];
+        }
     }
-    
-        
-    
+    while (otop >= 0) {
+        pstack[++ptop] = ostack[otop--];
+    }
+    cout << "Postfix expression: ";
+    for (i = 0; i <= ptop; i++)
+        cout << pstack[i];
 
-
- return 0;
+    return 0;
 }
