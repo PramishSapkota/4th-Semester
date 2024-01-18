@@ -1,6 +1,6 @@
 //infix to postfix conversion
 #include<iostream>
-#include<ctype.h>
+#include<ctype.h>//for testing and manipulating character
 #define ssize 50
 #define psize 50
 using namespace std;

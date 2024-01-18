@@ -1,8 +1,9 @@
 #include<iostream>
 #include<math.h>
 // #include<cstdlib> //for exit -1
-//#define f(x) (cos(x)-x*exp(x))//defining a function is better than macro so 
-//using function bcz function is less error prone
+//#define f(x) (cos(x)-x*exp(x))
+/*defining a function is better than macro so using function bcz 
+function is less error prone*/
 
 using namespace std;
 
