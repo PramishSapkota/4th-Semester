@@ -12,18 +12,14 @@ int main()
         for(j=1;j<n+1;j++){
             cout<<"\nEnter element A["<<i<<"]["<<j<<"]: ";
             cin>>A[i][j];
-        }
-    }
-    
-    for(i=1;i<n+1;i++){
-        for(j=1;j<n+1;j++){
+            //for identity matrix 
             if (i==j)
                 B[i][j]=1;
             else
                 B[i][j]=0;
-                      
         }
     }
+
    for(i=1;i<n+1;i++){
     if (A[i][i]==0)
         {
