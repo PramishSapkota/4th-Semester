@@ -17,18 +17,6 @@ int main(){
             cin>>A[i][j];
         }
     }
-    for(i=1;i<=n;i++){
-        for(j=i+1;j<=n+1;j++){
-            if(i!=j){
-                temp=A[j][i]/A[i][i];
-                for(k=1;k<=n+1;k++){
-                    
-                    A[j][k]=A[j][k]-temp*A[i][k];
-                
-                }
-            }
-        }
-    }
     //upper triangle
     for (i = 1; i <= n; i++) {
         for (j = i + 1; j <= n + 1; j++) {
