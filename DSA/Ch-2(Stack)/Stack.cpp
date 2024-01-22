@@ -72,7 +72,7 @@ void Stack::display(){
     if (top==-1)
         cout<<"\n No items to be displayed";
     else{
-        for (int i = top- 1; i >= 0; i--)
+        for (int i = top; i >= 0; i--)
         {
             cout<<"\t"<<A[i];
         }

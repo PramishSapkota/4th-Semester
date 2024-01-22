@@ -3,10 +3,10 @@
 using namespace std; 
 
 class Node {//represents a node
-public: 
+ private: 
 	int data; 
 	Node* next; 
-
+ public:
 	Node() 
 	{ 
 		data = 0; 
@@ -23,12 +23,12 @@ public:
 class Linkedlist { 
 	Node* head; 
 
-public: 
+ public: 
 	Linkedlist() { head = NULL; } 
-	void insert1st(int);//to insert node at 1st position
+	void insert_1st(int);//to insert node at 1st position
 	void insertNode(int); //to insert node
-	void delete1st();
-	void deletelast();//to delete last node
+	void delete_1st();
+	void deleteLast();//to delete last node
 	void deleteNode(int);//to delete node at a position
 		
 	void printList(){
@@ -63,7 +63,7 @@ void Linkedlist::deleteNode(int nodeOffset)
 	int ListLen = 0; 
 
 	if (head == NULL) { 
-		cout << "List empty." << endl; 
+		cout << "List empty" << endl; 
 		return; 
 	} 
 
@@ -136,7 +136,7 @@ int main()
 		cout<<"\n2:Insert node at 1st";
 		cout<<"\n3:Delete node at given position";
 		cout<<"\n4:Delete 1st node";
-		cout<<"\n5:delete last node";
+		cout<<"\n5:Delete last node";
 		cout<<"\n6:Print Node";
 		cout<<"\n7:Exit";
 		here:
@@ -152,7 +152,7 @@ int main()
 		case 2:
 			cout<<"\nEnter the data:";
 			cin>>value;
-			list.insert1st(value);
+			list.insert_1st(value);
 			break;
 
 		case 3:
@@ -161,11 +161,11 @@ int main()
 			list.deleteNode(value);
 			break;
 		case 4:
-			list.delete1st();
+			list.delete_1st();
 			break;
 
 		case 5:
-			list.deletelast();
+			list.deleteLast();
 			break;
 
 		case 6:
@@ -185,7 +185,7 @@ int main()
 	return 0; 
 }
 
-void Linkedlist::insert1st(int data){
+void Linkedlist::insert_1st(int data){
 	Node* newNode = new Node(data); 
 	if (head == NULL) 
 		head = newNode; 
@@ -195,13 +195,13 @@ void Linkedlist::insert1st(int data){
 	}
 }
 
-void Linkedlist::delete1st(){
+void Linkedlist::delete_1st(){
 	Node *temp=head;
 	head = head->next; 
 	delete temp; 
 }
 
-void Linkedlist::deletelast(){
+void Linkedlist::deleteLast(){
 	Node *temp1=head,*temp=NULL;
 	while (temp1->next->next!= NULL) 
 		temp1 = temp1->next; 
