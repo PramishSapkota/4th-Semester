@@ -13,6 +13,7 @@ typedef struct doubly Nodetype;
 Nodetype *head=NULL;
 Nodetype *temp=NULL;//this works
 
+void Display();
 void insertFront(int data) {
     Nodetype *newdoubly = (Nodetype*)malloc(sizeof(Nodetype));
     if(head==NULL){
@@ -119,7 +120,8 @@ int main(){
         printf("\n4:Delete element at first");
         printf("\n5:Delete element at kth position");
         printf("\n6:Delete element at last");
-        printf("\n7:Exit");
+        printf("\n7:Display");
+        printf("\n8:Exit");
         printf("\nEnter your choice:");
         scanf("%d",&choice);
         switch (choice)
@@ -155,6 +157,9 @@ int main(){
             break;
 
         case 7:
+            Display();
+            break;
+        case 8:
             a=0;
             break;
         default:
@@ -162,5 +167,19 @@ int main(){
             break;
         }
     }while (a);
+ return 0;
 }
 
+void Display(){
+    Nodetype *temp = head;
+    // Check for empty list. 
+    if (head == NULL) { 
+    	printf("List empty\n"); 
+    	return;//bcz its void type the return 
+    } 		 //statement will exit this function
+    // Traverse the list 
+    while (temp != NULL) { 
+    	printf(%d"\t",temp->data); 
+    	temp = temp->next; 
+    } 
+} 

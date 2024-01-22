@@ -13,11 +13,12 @@ class Queue
         rear=-1;
     }
     void enqueue(){
-        if (front==size-1)
+        if (rear==size-1)
             cout<<"\nQueue is full";
-        else
+        else{
             cout<<"\nEnter data:";
             cin>>Q[++rear];
+        }
     }
     void dequeue(){
         if (rear<front)

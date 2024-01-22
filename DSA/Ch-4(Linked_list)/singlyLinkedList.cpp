@@ -25,27 +25,36 @@ class Linkedlist {
 
 public: 
 	Linkedlist() { head = NULL; } 
-	void insertNode(int); //to insert node at last  
+	void insert1st(int);//to insert node at 1st position
+	void insertNode(int); //to insert node
+	void delete1st();
+	void deletelast();//to delete last node
 	void deleteNode(int);//to delete node at a position
 		
 	void printList(){
-
 		Node* temp = head; 
-
 		// Check for empty list. 
 		if (head == NULL) { 
 			cout << "List empty" << endl; 
-			return; 
-		} 
-
-		// Traverse the list. 
+			return;//bcz its void type the return 
+		} 		 //statement will exit this function
+		// Traverse the list
 		while (temp != NULL) { 
 			cout << temp->data << " "; 
 			temp = temp->next; 
 		} 
 	} 
-
-	 
+    // Destructor to release memory when the object is destroyed
+	~Linkedlist(){
+        Node* current = head;
+        Node* next;
+		while (current != NULL) {
+            next = current->next;
+            delete current;
+            current = next;
+        }
+        head = NULL;
+    }
 }; 
 // delete node at given position 
 void Linkedlist::deleteNode(int nodeOffset) 
@@ -80,8 +89,7 @@ void Linkedlist::deleteNode(int nodeOffset)
 		return; 
 	} 
 
-	// Traverse the list to 
-	// find the node to be deleted. 
+	// Traverse the list to find the node to be deleted. 
 	while (nodeOffset-- > 1) { 
 
 		// Update temp2 
@@ -91,8 +99,7 @@ void Linkedlist::deleteNode(int nodeOffset)
 		temp1 = temp1->next; 
 	} 
 
-	// Change the next pointer 
-	// of the previous node. 
+	// Change the next pointer of the previous node.
 	temp2->next = temp1->next; 
 
 	// Delete the node 
@@ -113,12 +120,9 @@ void Linkedlist::insertNode(int data)
 
 	// Traverse till end of list 
 	Node* temp = head; 
-	while (temp->next != NULL) { 
-
-		// Update temp 
+	while (temp->next != NULL) {  
 		temp = temp->next; 
 	} 
-
 	// Insert at the last. 
 	temp->next = newNode; 
 } 
@@ -129,9 +133,12 @@ int main()
 	int choice,a=1,value;
 	do{
 		cout<<"\n\n1:Insert node";
-		cout<<"\n2:Print Node";
-		cout<<"\n3:Delete node";
-		cout<<"\n4:Exit";
+		cout<<"\n2:Insert node at 1st";
+		cout<<"\n3:Delete node at given position";
+		cout<<"\n4:Delete 1st node";
+		cout<<"\n5:delete last node";
+		cout<<"\n6:Print Node";
+		cout<<"\n7:Exit";
 		here:
 		cout<<"\n\nEnter your choice:";
 		cin>>choice;
@@ -143,16 +150,29 @@ int main()
 			break;
 
 		case 2:
-			cout<<"\nElements of list are:\n";
-			list.printList();
+			cout<<"\nEnter the data:";
+			cin>>value;
+			list.insert1st(value);
 			break;
 
 		case 3:
 			cout<<"\nEnter the position:";
 			cin>>value;
 			list.deleteNode(value);
-
+			break;
 		case 4:
+			list.delete1st();
+			break;
+
+		case 5:
+			list.deletelast();
+			break;
+
+		case 6:
+			cout<<"\nElements of list are:\n";
+			list.printList();
+			break;
+		case 7:
 			a=0;
 			break;
 		default:
@@ -163,4 +183,30 @@ int main()
 	}while(a);
 
 	return 0; 
+}
+
+void Linkedlist::insert1st(int data){
+	Node* newNode = new Node(data); 
+	if (head == NULL) 
+		head = newNode; 
+	else{
+		newNode->next=head;
+		head=newNode;
+	}
+}
+
+void Linkedlist::delete1st(){
+	Node *temp=head;
+	head = head->next; 
+	delete temp; 
+}
+
+void Linkedlist::deletelast(){
+	Node *temp1=head,*temp=NULL;
+	while (temp1->next->next!= NULL) 
+		temp1 = temp1->next; 
+	temp=temp1->next;
+	temp1->next=NULL;
+	delete temp;
+	
 }
