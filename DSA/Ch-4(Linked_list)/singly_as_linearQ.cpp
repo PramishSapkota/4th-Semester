@@ -51,8 +51,10 @@ class linked_list
             return;
         }
         else{
+            temp=head;
             cout<<"\nData="<< head->data;
             head=head->next;
+            delete temp;
         }
     }
     void traverse(){
