@@ -1,5 +1,6 @@
 //least square method for linear interpolation
 #include <iostream>
+#include<iomanip>
 using namespace std;
 int i;
 
@@ -26,8 +27,7 @@ void dataEnter(float *a,float *b,int n){
     for ( i = 0; i < n; i++)
     {
         cout<<"\n Enter (x,y):";
-        cin>>a[i];
-        cin>>b[i];
+        cin>>a[i]>>b[i];
     }
 }
 
@@ -47,6 +47,6 @@ void leastSquare(float *x,float *y,int n){
     det_B=xy*sum_x- x2*sum_y;
     det=sum_x*sum_x- x2*n;
     cout<<"\nInterpolated Equation is:\n";
-    cout<<det_A/det<<"x+"<<det_B/det;
+    cout<<setprecision(4)<<det_A/det<<"x+"<<setprecision(4)<<det_B/det;
     
 }
