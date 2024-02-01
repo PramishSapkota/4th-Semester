@@ -35,7 +35,6 @@ void insertFront(int data) {
 
 void insertAt(int p){
     Nodetype *newdoubly = (Nodetype*)malloc(sizeof(Nodetype));
-    //Nodetype *temp;
     temp=head;
     for(i=0;i<p;i++)
         temp=temp->next;
@@ -53,7 +52,7 @@ void insertAt(int p){
 }
 
 void deleteFront(){
-    Nodetype *temp;
+    // Nodetype *temp;
     if(head != NULL){
         temp=head;
         temp->next->prev=NULL;
@@ -171,7 +170,7 @@ int main(){
 }
 
 void Display(){
-    Nodetype *temp = head;
+    temp = head;
     // Check for empty list. 
     if (head == NULL) { 
     	printf("List empty\n"); 
@@ -179,7 +178,7 @@ void Display(){
     } 		 //statement will exit this function
     // Traverse the list 
     while (temp != NULL) { 
-    	printf(%d"\t",temp->data); 
+    	printf("%d\t",temp->info); 
     	temp = temp->next; 
     } 
 } 
