@@ -27,11 +27,8 @@ int main()
             if(i!=j){
                 temp=A[j][i]/A[i][i];
                 for(k=1;k<=n+1;k++)
-                {
-                    //int k=1;
+                    
                     A[j][k]=A[j][k]-temp*A[i][k];
-                    //k++;
-                }
             }
             
         }

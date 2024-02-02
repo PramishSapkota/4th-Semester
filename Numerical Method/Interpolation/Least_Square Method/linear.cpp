@@ -26,8 +26,10 @@ int main(){
 void dataEnter(float *a,float *b,int n){
     for ( i = 0; i < n; i++)
     {
-        cout<<"\n Enter (x,y):";
-        cin>>a[i]>>b[i];
+        cout<<"\n Enter x"<<i;
+        cin>>a[i];
+        cout<<"\nEnter y"<<i;
+        cin>>b[i];
     }
 }
 

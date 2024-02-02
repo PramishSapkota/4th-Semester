@@ -1,43 +1,47 @@
 //least square method for quadratic interpolation
-// #include <iomanip>
+#include <iomanip>
 #include <iostream>
 #include<cmath>
 using namespace std;
 int i;
 
+void cleanup(float **A, int n);
 void GaussJordan(float **A,int n){
     float temp;
-    float *val=new float(n);
+    float *val=new float[n];
     int j,k;
     for(i=0;i<n;i++){
         if (A[i][i]==0){
             cout<<"\n Cannot divide by 0.Program terminating";
+            cleanup(A, n);
             return;
         }
         for(j=0;j<n+1 && j!=i;j++){
-            //if(j!=i)
-            {
+        // for(j=0;j<n+1;j++){
+        //     if(j!=i)
+        //     {
                 temp=A[j][i]/A[i][i];
-                for(k=1;k<=n+1;k++)
+                for(k=0;k<n+1;k++)
                     A[j][k]=A[j][k]-temp*A[i][k];
-            }
-            
+            // }
         }
     }
-    
-    for(i=1;i<n+1;i++){
-        val[i]=A[i][n+1]/A[i][i];
+    cout<<"hi";
+    for(i=0;i<n;i++){
+        val[i]=A[i][n]/A[i][i];
     }
-    cout<<"\nEquation is:\n"
-    cout<<val[0]<<"x^2+"<<val[1]<<"x+"<<val[2];
-
+    cout<<"\nEquation is:\n";
+    cout<<setprecision(4)<<val[0]<<"x^2+"<<setprecision(4)<<val[1]<<"x+"<<setprecision(4)<<val[2];
+    // cout<<val[0]<<"x^2+"<<val[1]<<"x+"<<val[2];
+    
     delete[] val;
 }
 void dataEnter(float *a,float *b,int n){
-    for ( i = 0; i < n; i++)
-    {
-        cout<<"\n Enter (x,y):";
-        cin>>a[i]>>b[i];
+    for ( i = 0; i < n; i++){
+        cout<<"\n\n Enter x"<<i<<":";
+        cin>>a[i];
+        cout<<"\n Enter y"<<i<<":";
+        cin>>b[i];
     }
 }
 
@@ -52,7 +56,6 @@ int main(){
     void leastSquare(float*,float*,int);
     leastSquare(x,y,n);
 
-    
     //deallocation
     delete[] x;
     delete[] y;
@@ -74,7 +77,7 @@ void leastSquare(float *x,float *y,int n){
         
         //dynamic allocation of 2d array
         float **A=new float* [3];//only creates rows
-        for ( i = 0; i < n; i++)
+        for ( i = 0; i < 3; i++)
             A[i]= new float [4];//creates columns
         /*adding data
      our normal equations are:  "Note:'[ ]' denotes summation"
@@ -88,10 +91,14 @@ void leastSquare(float *x,float *y,int n){
         A[2][0]=x4; A[2][1]=x3;     A[2][2]=x2;     A[2][3]=x2y;
     
         GaussJordan(A,3);
-        //deallocation of 2d array
-        for ( i = 0; i < n; i++)
-            delete[] A[i];
-        delete[] A;
+        // Clean up and deallocate memory
+        cleanup(A, 3);
     }
 
+}
+void cleanup(float **A, int n) {
+    // Deallocation of 2D array
+    for (int i = 0; i < n; i++)
+        delete[] A[i];
+    delete[] A;
 }

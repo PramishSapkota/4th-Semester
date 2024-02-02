@@ -8,7 +8,7 @@ struct node
     node *next;
 };
 node *head=NULL;
-// node *temp=NULL;
+node *temp=NULL;
 
 class linked_list
 {

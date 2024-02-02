@@ -58,7 +58,7 @@ void Display(){
     	return;//exit(0)
     } 		 
     while (temp != NULL) { 
-    	printf(%d"\t",temp->data); 
+    	printf("%d\t",temp->info); 
     	temp = temp->next; 
     } 
 }    
