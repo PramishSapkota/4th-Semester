@@ -24,6 +24,8 @@ int main()
         }
         
         for(j=1;j<=n;j++){
+     /*no need to go to n+1 for j also cuz only the kth loop should go to n+1 i.e 
+     upto coefficient term of augmented matrix*/
             if(i!=j){
                 temp=A[j][i]/A[i][i];
                 for(k=1;k<=n+1;k++)

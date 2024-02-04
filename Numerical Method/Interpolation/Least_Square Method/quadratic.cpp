@@ -81,7 +81,7 @@ void leastSquare(float *x,float *y,int n){
     //dynamic allocation of 2d array
     float **A=new float* [3];//only creates rows
     for ( i = 0; i < 3; i++)
-            A[i]= new float [4];//creates columns
+        A[i]= new float [4];//creates columns
         /*adding data
      our normal equations are:  "Note:'[ ]' denotes summation"
         
