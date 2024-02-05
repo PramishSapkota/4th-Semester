@@ -1,0 +1,33 @@
+//what's the difference?Why code2 gives error 
+//code1: doesnt give error
+double summation_x(float *x,int n,int p){//n=size ofx p=power
+    double v=0;
+    for ( i = 0; i < n; i++)
+        v+=pow(x[i],p);
+ return v;
+}
+
+double summation_xy(float *x,float *y,int p,int n){
+    double v=0;
+    for ( i = 0; i < n; i++)
+        v+=pow(x[i],p)*y[i];
+ return v;
+}
+
+//code 2: gives error
+double summation_x(float *x,int n,int p){//n=size ofx p=power
+    double v=0;
+    for ( i = 0; i < n; i++)
+        
+        v+=pow(x[i],p);
+ return v;
+}
+
+double summation_xy(float *x,float *y,int p,int n){
+    double v=0;
+    for ( i = 0; i < n; i++)
+        
+        v+=pow(x[i],p)*y[i];
+    
+ return v;
+}

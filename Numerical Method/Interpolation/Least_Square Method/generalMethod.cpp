@@ -16,8 +16,8 @@ void dataEnter(float *a,float *b,int n){
         cin>>b[i];
     }
 }
-
-/*double summation_x(float *x,int n,int p){//n=size ofx p=power
+/*
+double summation_x(float *x,int n,int p){//n=size ofx p=power
     double v=0;
     for ( i = 0; i < n; i++)
         v+=pow(x[i],p);
@@ -32,32 +32,31 @@ double summation_xy(float *x,float *y,int p,int n){
 }
 
 void value(double **A,float *x,float *y,int n,int d){
-    for ( i = 0; i <d; i++)
+    for ( i = 0; i < d; i++)
     {
         A[i][d]=summation_xy(x,y,i,n);
         for ( j = 0; j < d; j++)
             A[i][j]=summation_x(x,n,i+j);
     }
-}*/
-
+}
+/*/
 void value(double**matrix,float *x,float*y,int size,int degree){
-   for(int i=0;i<=degree;i++){
-      for(int j=0;j<=degree;j++){
+   for(int i=0;i<degree;i++){
+      for(int j=0;j<degree;j++){
          matrix[i][j]=0;
         for(int k=0;k<size;k++){
             matrix[i][j]=matrix[i][j]+pow(x[k],i+j);
         }
      }
    }
-
-   for(int i=0;i<=degree;i++){
+    for(int i=0;i<degree;i++){
     
      for(int k=0;k<size;k++)
-        matrix[i][degree+1]=matrix[i][degree+1]+pow(x[k],i)*y[k];
+        matrix[i][degree]+=pow(x[k],i)*y[k];
      
     }
 }
-
+//*/
 void cleanup(double **A, int n) {
     for (int i = 0; i < n; i++)
         delete[] A[i];
@@ -79,7 +78,7 @@ int main(){
     for ( i = 0; i < d+1; i++)
         A[i]= new double [d+2];
     
-    value(A,x,y,n,d);
+    value(A,x,y,n,d+1);
     cout<<"\n Augmented matrix is:";
     print(A,d+1);
 
@@ -117,7 +116,7 @@ void gaussJordan(double **A,int n){
             }
         }
     }
-    cout<<"\n\nCurve is:"
+    cout<<"\n\nCurve is:";
     for (i = 0; i < n; i++) {
         cout << "value of x^" << i << "="<<setprecision(5) << A[i][n] / A[i][i]<<"+";
     
