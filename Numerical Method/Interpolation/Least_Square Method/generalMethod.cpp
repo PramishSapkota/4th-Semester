@@ -118,7 +118,8 @@ void gaussJordan(double **A,int n){
     }
     cout<<"\n\nCurve is:";
     for (i = 0; i < n; i++) {
-        cout << "value of x^" << i << "="<<setprecision(5) << A[i][n] / A[i][i]<<"+";
-    
+        
+        cout  <<setprecision(5) << A[i][n] / A[i][i]<< " x^" << i<<"+";
     }
+    cout<<"0";
 }

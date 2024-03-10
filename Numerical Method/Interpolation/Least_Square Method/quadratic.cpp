@@ -93,6 +93,16 @@ void leastSquare(float *x,float *y,int n){
     A[1][0]=x3; A[1][1]=x2;     A[1][2]=sum_x;  A[1][3]=xy;
     A[2][0]=x4; A[2][1]=x3;     A[2][2]=x2;     A[2][3]=x2y;
     
+    cout<<"\nAugmented matrix:";
+    int j;
+    for ( i = 0; i < 3; i++)
+    {
+        cout<<"\n";
+        for ( j = 0; j < 4; j++)
+            
+            cout<<A[i][j]<<"\t";
+    }
+    
     GaussJordan(A,3);
     // Clean up and deallocate memory
     cleanup(A, 3);
